@@ -1,0 +1,105 @@
+{
+  "name": "Drug",
+  "plural": "drugs",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "substance_name": {
+      "type": [
+        "string"
+      ]
+    },
+    "brand_name": {
+      "type": [
+        "string"
+      ]
+    },
+    "purpose": {
+      "type": [
+        "string"
+      ]
+    },
+    "generic_name": {
+      "type": [
+        "string"
+      ]
+    },
+    "manufacturer_name": {
+      "type": [
+        "string"
+      ]
+    },
+    "product_type": {
+      "type": [
+        "string"
+      ]
+    },
+    "route": {
+      "type": [
+        "string"
+      ]
+    },
+    "package_label_principal_display_panel": {
+      "type": [
+        "string"
+      ]
+    },
+    "active_ingredient": {
+      "type": [
+        "string"
+      ]
+    },
+    "inactive_ingredient": {
+      "type": [
+        "string"
+      ]
+    },
+    "overdosage": {
+      "type": [
+        "string"
+      ]
+    },
+    "dosage_and_administration": {
+      "type": [
+        "string"
+      ]
+    },
+    "adverse_reactions": {
+      "type": [
+        "string"
+      ]
+    },
+    "warnings": {
+      "type": [
+        "string"
+      ]
+    },
+    "stop_use": {
+      "type": [
+        "string"
+      ]
+    },
+    "keep_out_of_reach_of_children": {
+      "type": [
+        "string"
+      ]
+    },
+    "ask_doctor": {
+      "type": [
+        "string"
+      ]
+    },
+    "questions": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

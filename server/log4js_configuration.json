@@ -1,0 +1,13 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "logs/log_file.log",
+      "maxLogSize": 1048576,
+      "backups": 3,
+      "category": ["app", "console", "drug", "event", "recall"]
+    },
+     { "type": "console" }
+  ],
+   "replaceConsole": true
+}

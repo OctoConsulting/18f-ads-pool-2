@@ -1,0 +1,142 @@
+<div class="med-filters text-center">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid increase-both">
+      <ul class="nav navbar-nav">
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <span ng-if="!events.filters.gender">Gender</span> <span ng-if="events.filters.gender"> {{events.filters.gender.val}} </span><span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateGender();">Any Gender</a></li>
+              <li ng-repeat="genderItem in references.gender">
+                <a ng-click="updateGender(genderItem);">{{genderItem.val}}</a>
+              </li>
+            </ul>
+        </li>
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span ng-if="!events.filters.age">Age</span> <span ng-if="events.filters.age && !events.filters.age.minAge"> Under {{events.filters.age.maxAge}} </span> <span ng-if="events.filters.age && events.filters.age.minAge && events.filters.age.maxAge" > Ages {{events.filters.age.minAge}} to {{events.filters.age.maxAge}} </span> <span ng-if="events.filters.age && !events.filters.age.maxAge"> {{events.filters.age.minAge}} and up </span> <span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateAge();">All ages</a></li>
+              <li ng-repeat="ageItem in references.age">
+                <a ng-if="!ageItem.minAge" ng-click="updateAge(ageItem);">Under {{ageItem.maxAge}}</a>
+                <a ng-if="ageItem.minAge && ageItem.maxAge" ng-click="updateAge(ageItem);">Ages {{ageItem.minAge}} to {{ageItem.maxAge}}</a>
+                <a ng-if="!ageItem.maxAge" ng-click="updateAge(ageItem);">{{ageItem.minAge}} and up</a>
+              </li>
+            </ul>
+        </li> 
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span ng-if="!events.filters.time">Time Frame</span> <span ng-if="events.filters.time && !events.filters.time.minDt">Past {{events.filters.time.maxDt}} years</span><span ng-if="events.filters.time &&!events.filters.time.maxDt">Over {{events.filters.time.minDt}} years</span><span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateTimeframe();">All time frames</a></li>
+              <li ng-repeat="timeItem in references.timeline">
+                <a ng-if="!timeItem.minDt" ng-click="updateTimeframe(timeItem);">Past {{timeItem.maxDt}} years</a>
+                <a ng-if="!timeItem.maxDt" ng-click="updateTimeframe(timeItem);">Over {{timeItem.minDt}} years</a>
+              </li>
+            </ul>
+        </li>
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span ng-if="!events.filters.severity">Severity</span> <span ng-if="events.filters.severity"> {{events.filters.severity.val}} </span> <span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateSeverity();">View all severities</a></li>
+              <li ng-repeat="seriousItem in references.seriousness">
+                <a ng-click="updateSeverity(seriousItem);">{{seriousItem.val}}</a>
+              </li>
+            </ul>
+        </li>                                                                 
+      </ul>
+    </div>
+  </nav>
+</div>
+<h3 class="text-center" ng-if="indicator=='brand'">Adverse Effects for <strong>{{details.drug.brand_name[0]}}</strong> <span class="highlight">({{events.response.count | number}})</span></h3>
+<h3 class="text-center" ng-if="indicator=='generic'">Adverse Effects for <strong>{{details.drug.generic_name[0]}}</strong> <span class="highlight">({{events.response.count | number}})</span></h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="chart-height donut-chart" donut-chart donut-colors='charts.events.colors1' donut-data='charts.events.reactions'></div>      
+      </div>
+      <div class="col-md-6">
+        <div class="chart-text well vert-offset-top-6">
+          <ul class="list-unstyled">
+            <li ng-repeat="name in charts.events.reactions track by $index"><span class="square-box" style="background:{{charts.events.colors1[$index]}}"></span>{{name.label}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">  
+        <div class="chart-height donut-chart" donut-chart donut-colors='charts.events.colors2' donut-data='charts.events.outcomes'></div>      
+      </div>
+      <div class="col-md-6">
+        <div class="chart-text well vert-offset-top-5">
+          <ul class="list-unstyled">
+            <li ng-repeat="name in charts.events.outcomes track by $index"><span class="square-box" style="background:{{charts.events.colors2[$index]}}"></span>{{name.label}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+
+<section class="row">
+  <div class="col-md-12 item-listing">
+    <article ng-repeat="item in events.response.events">
+      <header class="row" ng-click="item.collapsed = !item.collapsed">
+          <div class="col-md-12 item-detail">
+              <div class="row-same-height">
+                  <div class="col-sm-2 col-middle">
+                      <img class="center-block hidden-xs" alt="image" ng-src="{{getRelevantImage(item.receivedate)}}">
+                      <h5 class="text-uppercase text-center small">{{item.safetyreportid}}</h5>
+                  </div>
+                  <div class="col-sm-10 col-middle col-md-height">
+                      <a class="item-link" aria-expanded="false" aria-controls="caseNum2" data-toggle="collapse">{{item.patient.reaction}}</a>
+                      <p class="text-muted small">{{item.receivedate | amDateFormat:'MMMM Do, YYYY' }} <span class="pull-right">Patient: {{item.patient.gender}}, Age: {{item.patient.age}}</span></p>
+                  </div>
+              </div>
+          </div>
+      </header>
+      <section class="detail-section collapse row" collapse="!item.collapsed">  
+        <div class="col-md-12">
+            <dl>
+              <dt>Seriousness</dt>
+              <dd>
+                <ul>
+                  <li ng-repeat='seriousItem in item.serious track by $index'>{{seriousItem}}</li>
+                </ul>
+              </dd>
+              <dt>Reactions</dt>
+              <dd>{{item.patient.reaction}}</dd>                          
+              <dt>All Substance(s) Taken</dt>
+              <dd>
+                <ul>
+                  <li ng-repeat='drugItem in item.patient.drugSubstance track by $index'>{{drugItem}}</li>
+                </ul>
+              </dd>                            
+            </dl>
+            <nav class="pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a class="btn btn-default" ng-click="item.collapsed = !item.collapsed" aria-expanded="false" aria-controls="reportID001"  role="button">Collapse</a></li>
+                </ul>
+            </nav>            
+        </div>
+
+      </section>     
+    </article>
+    <footer class="row pagination text-center">
+      <div class="col-md-8 col-md-offset-2">
+        <nav ng-class="{ 'disabled': events.pageChangeAction }">
+          <pagination items-per-page="maxPerPage" total-items="events.response.count" ng-model="events.currentPage" ng-change="eventsPageChanged()" max-size="events.maxPages" class="pagination-sm" boundary-links="true" rotate="false" num-pages="events.totalPages"></pagination>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</section>

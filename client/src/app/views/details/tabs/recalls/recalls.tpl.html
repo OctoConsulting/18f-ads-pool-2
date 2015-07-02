@@ -1,0 +1,88 @@
+<div class="med-filters text-center">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid increase-both">
+      <ul class="nav navbar-nav">
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span ng-if="!recalls.filters.reason">Reason</span> <span ng-if="recalls.filters.reason"> {{recalls.filters.reason.val}} </span> <span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateReasons();">View all reasons</a></li>
+              <li ng-repeat="reasonItem in references.reasons">
+                <a ng-click="updateReasons(reasonItem);">{{reasonItem.val}}</a>
+              </li>
+            </ul>
+        </li>                      
+        <li dropdown>
+            <a dropdown-toggle class="white" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <span ng-if="!recalls.filters.time">Time Frame</span> <span ng-if="recalls.filters.time && !recalls.filters.time.minDt">Past {{recalls.filters.time.maxDt}} years</span><span ng-if="recalls.filters.time &&!recalls.filters.time.maxDt">Over {{recalls.filters.time.minDt}} years</span><span class="caret"></span>
+            </a>
+            <ul role="menu" class="dropdown-menu">
+              <li><a ng-click="updateRecallTimeframe();">All time frames</a></li>
+              <li ng-repeat="timeItem in references.timeline">
+                <a ng-if="!timeItem.minDt" ng-click="updateRecallTimeframe(timeItem);">Past {{timeItem.maxDt}} years</a>
+                <a ng-if="!timeItem.maxDt" ng-click="updateRecallTimeframe(timeItem);">Over {{timeItem.minDt}} years</a>
+              </li>
+            </ul>
+        </li>                                                                 
+      </ul>
+    </div>
+  </nav>
+</div>
+<h3 class="text-center" ng-if="indicator=='brand'">Recalls for <strong>{{details.drug.brand_name[0]}}</strong> <span class="highlight">({{recalls.response.count | number}})</span></h3>
+<h3 class="text-center" ng-if="indicator=='generic'">Recalls for <strong>{{details.drug.generic_name[0]}}</strong> <span class="highlight">({{recalls.response.count | number}})</span></h3>
+
+
+<section class="row">
+  <div class="col-md-12 item-listing">
+    <article ng-repeat="item in recalls.response.recalls">
+      <header class="row" ng-click="item.collapsed = !item.collapsed">
+          <div class="col-md-12 item-detail">
+              <div class="row-same-height">
+                  <div class="col-sm-2 col-middle">
+                      <img class="center-block hidden-xs" alt="image" ng-src="{{getRelevantImage(item.receivedate)}}">
+                      <h5 class="text-uppercase text-center small">{{item.recall_number}}</h5>
+                  </div>
+                  <div class="col-sm-10 col-middle col-md-height">
+                      <a class="item-link" aria-expanded="false" aria-controls="caseNum2" data-toggle="collapse">{{item.reason_for_recall}}</a>
+                      <p class="text-muted small">{{item.recall_initiation_date | amDateFormat:'MMMM Do, YYYY' }} </p>
+                  </div>
+              </div>
+          </div>
+      </header>
+      <section class="detail-section collapse row" collapse="!item.collapsed">  
+        <div class="col-md-12">
+              <dl>
+                <dt>Recall Number</dt>
+                <dd>{{item.recall_number}}<dd>
+                <dt>Recall Initiation Date</dt>
+                <dd>{{item.recall_initiation_date | amDateFormat:'MMMM Do, YYYY' }}</dd>
+                <dt>Reason for Recall</dt>
+                <dd>{{item.reason_for_recall}}</dd>
+                <dt>Distribution Pattern</dt>
+                <dd>{{item.distribution_pattern}}</dd>
+                <dt>Recalling Firm Name</dt>
+                <dd>{{item.recalling_firm}}</dd>
+                <dt>Quantity</dt>
+                <dd>{{item.product_quantity}}</dd>
+                <dt>Product Description</dt>
+                <dd>{{item.product_description}}</dd>
+              </dl>
+            <nav class="pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a class="btn btn-default" ng-click="item.collapsed = !item.collapsed" aria-expanded="false" aria-controls="recallNumber001"  role="button">Collapse</a></li>
+                </ul>
+            </nav>              
+          </div>
+
+      </section>         
+    </article>
+    <footer class="row pagination text-center">
+      <div class="col-md-8 col-md-offset-2">
+        <nav ng-class="{ 'disabled': recalls.pageChangeAction }">
+          <pagination items-per-page="maxPerPage" total-items="recalls.response.count" ng-model="recalls.currentPage" ng-change="recallsPageChanged()" max-size="recalls.maxPages" class="pagination-sm" boundary-links="true" rotate="false" num-pages="recalls.totalPages"></pagination>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</section>

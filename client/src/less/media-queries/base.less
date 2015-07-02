@@ -1,0 +1,103 @@
+/******************************************************************
+
+Stylesheet: Base Stylesheet
+
+******************************************************************/
+// Global values
+// --------------------------------------------------
+
+@white:                 #FFFFFF;
+@black:                 #000000;
+@bamboo:                #BCB589;
+@gold:					#B1A349;	
+@light-blue:            #607D8B;	
+@blue:             		#293655;
+@green:					#99B35C;
+
+
+// --------------------------------------------------
+
+@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:local('Roboto Light'),local('Roboto-Light'),url(http://fonts.gstatic.com/s/roboto/v14/Hgo13k-tfSpn0qi1SFdUfT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:local('Roboto Regular'),local('Roboto-Regular'),url(http://fonts.gstatic.com/s/roboto/v14/2UX7WLTfW3W8TclTUvlFyQ.woff) format('woff');}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:500;src:local('Roboto Medium'),local('Roboto-Medium'),url(http://fonts.gstatic.com/s/roboto/v14/RxZJdnzeo3R5zSexge8UUT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:local('Roboto Bold'),local('Roboto-Bold'),url(http://fonts.gstatic.com/s/roboto/v14/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:900;src:local('Roboto Black'),local('Roboto-Black'),url(http://fonts.gstatic.com/s/roboto/v14/mnpfi9pxYH-Go5UiibESIj8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+
+	body {
+		background-color:@white;
+		color:@blue;
+		font-weight:200;
+		font-size:16px;
+		font-family:'Roboto',Arial,Helvetica,sans-serif;
+	}
+	
+	strong {
+		font-weight:900;	
+	}
+	
+	h1 {
+		font-size:2em;	
+		font-weight:900;	
+		color:@blue;
+		margin-bottom:0;	
+	}
+	h2 {
+		font-size:1.8em;	
+		color:@blue;	
+	}
+	h3 {
+		font-size:1.6em;
+		font-weight:900;
+  		margin:.5em 0;	
+	}
+	h4 {
+		font-size:1.4em;	
+		line-height:1.6em;
+		font-size:1.3em;
+		color:@green;	
+	}
+	h5 {
+		font-size:1.2em;
+		color:@gold;
+		margin-top:0;		
+	}
+	p {
+		line-height:1.8em;	
+	}
+	a {
+		color:@light-blue;	
+	}
+	
+	a:hover {
+		color: darken(@light-blue, 20%);
+	}
+	.navbar {
+		background-color:@blue;	
+		color:@white;
+		
+		.nav > li > a:hover {
+			background-color:@light-blue;
+			color:@white;	
+		}
+		li.active {
+			background-color:@light-blue;	
+			a {
+				color:darken(@white, 5%);	
+			}
+		}
+		a {
+			color:@white;
+		}
+	}
+	.btn-primary {
+		background-color:@blue;
+		
+		&:hover, .active {
+			background-color:darken(@blue, 20%);	
+		}
+	}
+	
+	.page-title {
+		border-left:10px solid @green;
+		padding-left:.6em;	
+	}

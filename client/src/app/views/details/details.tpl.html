@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel med-panel">
+        <div class="panel-body med-info">
+          <h1 class="text-uppercase" ng-if="indicator=='brand'">{{details.drug.brand_name[0] | uppercase}}</h1>
+          <h1 class="text-uppercase" ng-if="indicator=='generic'">{{details.drug.generic_name[0] | uppercase}}</h1>
+          <span class="lead highlight" ng-if="indicator=='brand'">{{details.drug.generic_name[0] | uppercase}}</span>
+          <p read-more ng-model="details.drug.purpose[0]" words="true" length="50" class="small"></p>
+          <nav>
+            <ul class="list-unstyled">
+                <li ui-sref-active="hidden" ng-if="recalls.response.count"><a ui-sref=".recalls" ui-sref-opts="{reload: true, notify: true}" alt="" class="btn btn-primary btn-lg">View Recalls</a></li>
+                <li ui-sref-active="hidden" ng-if="!recalls.response.count"><a ui-sref=".recalls" ui-sref-opts="{reload: true, notify: true}" alt=""></a>No recalls found.</li>
+                <li ui-sref-active="hidden" ng-if="events.response.count"><a ui-sref=".events" ui-sref-opts="{reload: true, notify: true}" alt="" class="btn btn-primary btn-lg">View Adverse Events</a></li>
+                <li ui-sref-active="hidden" ng-if="!events.response.count"><a ui-sref=".recalls" ui-sref-opts="{reload: true, notify: true}" alt=""></a>No events found.</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div ui-view></div>
+    </div>
+  </div>
+</div>

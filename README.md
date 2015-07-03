@@ -2,7 +2,7 @@
 http://ec2-54-173-6-147.compute-1.amazonaws.com
 
 ## Deployment
-MedCheck is deployed using [Docker](http://docker.com), with the docker image available publicly on [Docker Hub](https://registry.hub.docker.com/u/octoconsulting/18f-ads/). In order to deploy the application in your own Docker environment, the following steps are required:
+MedSearch is deployed using [Docker](http://docker.com), with the docker image available publicly on [Docker Hub](https://registry.hub.docker.com/u/octoconsulting/18f-ads/). In order to deploy the application in your own Docker environment, the following steps are required:
 
 ### Download the container
 

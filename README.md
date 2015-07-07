@@ -27,6 +27,9 @@ This will start the container listening on port 80, you can specify a different 
 ## Tell the container to fetch and build the application ##
 	docker exec [container_id] /usr/local/bin/buildMedCheck.sh
 
+### ... That's it! ###
+Once the build is complete you can access the application on the port you specified above.
+
 # Introduction #
 MedSearch is a responsive application developed by Octo Consulting Group (Octo) in response to the solicitation released by 18F for Agile Delivery Services. MedSearch leverages fda.gov APIs and provides a listing of adverse events and recalls of drugs. Octo used a user-centric and agile-delivery approach in delivering MedSearch across multiple releases. Key highlights of our approach include:
 *             Use of Scrum to manage backlog and delivery of development
@@ -83,6 +86,3 @@ The team closed out the execution of the prototype by completing the documentati
 ## RFQ Section 24.0 Factor 1: Technical Approach ##
 *   Evidence to Digital Services Playbook - See Repository for Artifacts
 *   Criteria A through K – See Attachment E Approach Criteria Evidence for Pool 2
-### ... That's it! ###
-Once the build is complete you can access the application on the port you specified above.
-

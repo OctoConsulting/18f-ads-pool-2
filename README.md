@@ -1,14 +1,39 @@
+# GSA Agile Delivery Services (ADS I) RFQ# 4QTFHS150004 #
+## Octo Consulting Group ##
+## Response to Pool 2: Development ##
+
 <p align="center">
   <img src="https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/Images/medsearch%20logo.png?raw=true">
 </p>
  
+<https://medsearch.octoconsulting.com>
+
+# Deployment #
+MedSearch is deployed using [Docker](http://docker.com), with the docker image available publicly on [Docker Hub](https://registry.hub.docker.com/u/octoconsulting/18f-ads-pool2/). In order to deploy the application in your own Docker environment, the following steps are required:
+
+## Download the container ##
+	docker pull octoconsulting/18f-ads-pool2
+
+## Start the container ##
+	docker run -d -p 80:3000 -t octoconsulting/18f-ads-pool2
+
+This will start the container listening on port 80, you can specify a different port by changing the command above. Also, this port will have to be open and accessible on your server.
+
+## Get the container ID with docker ps ##
+	# docker ps
+	CONTAINER ID          IMAGE                            ...
+	[container_id]        octoconsulting/18f-ads-pool2     ...
+
+## Tell the container to fetch and build the application ##
+	docker exec [container_id] /usr/local/bin/buildMedCheck.sh
+
 # Introduction #
 MedSearch is a responsive application developed by Octo Consulting Group (Octo) in response to the solicitation released by 18F for Agile Delivery Services. MedSearch leverages fda.gov APIs and provides a listing of adverse events and recalls of drugs. Octo used a user-centric and agile-delivery approach in delivering MedSearch across multiple releases. Key highlights of our approach include:
 *             Use of Scrum to manage backlog and delivery of development
 *             Use of Kanban to manage backlog for DevOps
 *             Use of docker containers, docker hub and Jenkins to automate continuous integration and delivery
  
-# Our Approach #
+# Description of Our Approach #
 The following diagram outlines our approach for responding to the solicitation:
  
 ![Image of MedCheck](https://github.com/OctoConsulting/18f-ads-pool-3/blob/master/docs/images/approach.png?raw=true)
@@ -55,30 +80,9 @@ The team performed final field testing to ensure the application met user needs 
  
 The team closed out the execution of the prototype by completing the documentation necessary for submitting the solicitation response to the government.
  
-## Alignment to Digital Services Playbook - See Appendix E ##
-
-# MedSearch #
-https://medsearch.octoconsulting.com
-
-## Deployment ##
-MedSearch is deployed using [Docker](http://docker.com), with the docker image available publicly on [Docker Hub](https://registry.hub.docker.com/u/octoconsulting/18f-ads-pool2/). In order to deploy the application in your own Docker environment, the following steps are required:
-
-### Download the container ###
-	docker pull octoconsulting/18f-ads-pool2
-
-### Start the container ###
-	docker run -d -p 80:3000 -t octoconsulting/18f-ads-pool2
-
-This will start the container listening on port 80, you can specify a different port by changing the command above. Also, this port will have to be open and accessible on your server.
-
-### Get the container ID with docker ps ###
-	# docker ps
-	CONTAINER ID          IMAGE                            ...
-	[container_id]        octoconsulting/18f-ads-pool2     ...
-
-### Tell the container to fetch and build the application ###
-	docker exec [container_id] /usr/local/bin/buildMedCheck.sh
-
+## RFQ Section 24.0 Factor 1: Technical Approach ##
+*   Evidence to Digital Services Playbook - See Repository for Artifacts
+*   Criteria A through K – See Attachment E Approach Criteria Evidence for Pool 2
 ### ... That's it! ###
 Once the build is complete you can access the application on the port you specified above.
 

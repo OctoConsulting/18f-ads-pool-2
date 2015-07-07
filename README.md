@@ -65,4 +65,4 @@ The team closed out the execution of the prototype by completing the documentati
 
 # Alignment to Digital Services Playbook #
 
-<https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/deployment-instructions.md>
+<https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/DSP%20Alignment.xlsx>

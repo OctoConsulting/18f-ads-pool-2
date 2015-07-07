@@ -21,7 +21,7 @@ MedSearch is a responsive application developed by Octo Consulting Group (Octo) 
 # Description of Our Approach #
 The following diagram outlines our approach for responding to the solicitation:
  
-![Image of MedCheck](https://github.com/OctoConsulting/18f-ads-pool-3/blob/master/docs/images/approach.png?raw=true)
+![Image of MedCheck](https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/Images/approach.png?raw=true)
  
 ## Planning Phase ##
 Octo assembled a team of experienced agile experts, developers, analysts and devops engineers. A group of employees served as "users" during the development of the prototype, and reviewed FDA APIs to craft an initial problem statement that served as the scope for the project team.
@@ -33,19 +33,19 @@ The team reviewed the problem statement and analyzed datasets to understand the 
 The team also performed the following during this sprint:
 * Identified high-level features required to meet user needs
 * Decomposed features into user and technical stories that could be completed in a single sprint
-* Created a product vision and roadmap for delivery of features in multiple releases (Link)
+* Created a product vision and roadmap for delivery of features in multiple releases (<https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/Agile/Epic_Feature_Story_Breakdown.jpg>)
  
 ### Sprint #1..N (Sprinting) ###
-The prototype was iteratively built using an Agile approach; the development team using Scrum while the DevOps team using Kanban to ensure they stay ahead of the development team. The team initially planned for 3 production releases of the prototype. Features were planned for each Release, and individual stories for each feature were slotted in sprints within each Release (Links to pictures). The team made adjustments to the product based on user feedback after each demonstration and by collaborating with the users while working within the constraints imposed by the APIs.
+The prototype was iteratively built using an Agile approach; the development team using Scrum while the DevOps team using Kanban to ensure they stay ahead of the development team. The team initially planned for 3 production releases of the prototype. Features were planned for each Release, and individual stories for each feature were slotted in sprints within each Release (<https://github.com/OctoConsulting/18f-ads-pool-2/tree/master/docs/Agile>). The team made adjustments to the product based on user feedback after each demonstration and by collaborating with the users while working within the constraints imposed by the APIs.
  
-User stories were documented in a product backlog, with multiple versions reflecting the changing features identified by our users (Link to backlog). The team planned stories to be completed in each sprint, estimated story points, and reviewed completed stories with the Product Manager. At the end of each sprint, a product demo was conducted, feedback collected, product deployed to production, and a sprint review and retrospective completed (Link to retrospectives).  All user and design documentation necessary for the execution of the sprint was constantly updated.
+User stories were documented in a product backlog, with multiple versions reflecting the changing features identified by our users (<https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/Agile/Product%20Backlog%20Pool%202%20v6.xlsx>). The team planned stories to be completed in each sprint, estimated story points, and reviewed completed stories with the Product Manager. At the end of each sprint, a product demo was conducted, feedback collected, product deployed to production, and a sprint review and retrospective completed (<https://github.com/OctoConsulting/18f-ads-pool-2/tree/master/docs/Agile>).  All user and design documentation necessary for the execution of the sprint was constantly updated.
  
 #### Technical Approach ####
-Node.js and Loopback frameworks were selected as the primary stack for the service layer with Angular.js and Bootstrap serving as the front-end frameworks. Angular.js based front-end exchanged data with Loopback based service layer using secure Restful services with json as the primary data exchange format (Link for Architecture Diagram).
+Node.js and Loopback frameworks were selected as the primary stack for the service layer with Angular.js and Bootstrap serving as the front-end frameworks. Angular.js based front-end exchanged data with Loopback based service layer using secure Restful services with json as the primary data exchange format (<https://github.com/OctoConsulting/18f-ads-pool-2/blob/master/docs/CI%20CD%20and%20CM%20Workflow.png>).
  
 Karma test framework was used to write test cases for the front-end and a combination of Mocha, Supertest and Should were used to write test cases for the service layer. All test cases were automatically executed when new code was checked into the repository via a Jenkins hook for GitHub.  Once all test cases passed, the Jenkins-based automated build and promotion script deployed the code to the integration server. The DevOps team used Docker and Chef to code the infrastructure, and the prototype was deployed within a Docker container available publicly on Docker Hub. The integration and production environments were deployed on AWS EC2 instances.
  
-Nagios was used to monitor the health of the infrastructure and the deployed prototype code.  Automatic email alerts were sent to the administrator when predetermined thresholds on response time, concurrent users, disk usage, or server load are exceeded. (Links to screenshots)
+Nagios was used to monitor the health of the infrastructure and the deployed prototype code.  Automatic email alerts were sent to the administrator when predetermined thresholds on response time, concurrent users, disk usage, or server load are exceeded.
  
 <p align="center">
 <img src="https://github.com/OctoConsulting/18f-ads-pool-3/blob/master/docs/images/techstack.png?raw=true">

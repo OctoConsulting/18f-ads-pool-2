@@ -23,6 +23,6 @@ This will start the container listening on port 80, you can specify a different 
 ### ... That's it! ###
 Once the build is complete you can access the application on the port you specified above.
 
-For example, if the application is deployed on port 80, you can access the application using the following URL:
+For example, if the prototype is deployed on port 80, you can access the prototype using the following URL:
 
-	http://localhost:80/
+	http://<IP address of the VM>:80/
